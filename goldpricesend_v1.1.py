@@ -20,8 +20,6 @@ from alibabacloud_dysmsapi20170525 import models as dysmsapi_20170525_models
 from alibabacloud_tea_util import models as util_models
 from alibabacloud_tea_util.client import Client as UtilClient
 from typing import List  # 导入 List 类型提示
-from typing import List  # 导入 List 类型提示
-
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -33,7 +31,6 @@ go_app = 'finance.gold_price'
 goldid = os.getenv('GOLDID')
 go_appkey = os.getenv('GO_APPKEY')
 go_sign = os.getenv('GO_SIGN')
-
 
 # 阿里云短信服务配置
 access_key_id = os.getenv('ACCESS_KEY_ID')
@@ -127,8 +124,6 @@ def send_sms(buy_price, uptime):
     try:
         response = client.send_sms_with_options(send_sms_request, runtime)
         response_data = response.body
-        # 这个地方是无法 print 的，因为 response.body 是一个字典，无法直接 print
-        # print('resp data:', response_data)
         return {
             'BizId': response_data.biz_id,
             'RequestId': response_data.request_id,
